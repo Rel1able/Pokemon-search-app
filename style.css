@@ -1,31 +1,62 @@
+:root{
+    --main-color: #FEE715;
+    --secondary-color: #101820;
+}
+
+
 body{
     box-sizing: border-box;
-    height: 95vh;
+    height: 98vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     font-family: 'Times New Roman', Times, serif;
-    background-color: yellow;
+    background-color: var(--main-color);
+    padding: 0;
+    margin: 0;
 }
 
+
+header, footer{
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--main-color);
+    background-color: var(--secondary-color);
+    width: 100%;
+    text-align: center;
+}
+
+input{
+    background-color: var(--secondary-color);
+    padding: 10px;
+    width: 50%;
+    border: none;
+    text-align: center;
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+input:focus{
+    outline: var(--main-color);
+    
+}
 
 img{
     height: 175px;
     width: 175px;
     border: 2px solid;
+    background-color: rgb(255, 255, 255);
 }
 
 .form-data{
-   
-    background-color: rgb(232, 211, 255);
+    background-color: yellow;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 2px solid;
     padding: 10px;
-    gap: 8px;
+    gap: 10px;
     padding-bottom: 0;
 }
 
@@ -37,15 +68,20 @@ img{
 }
 
 .search-history{
+    font-weight: bold;
     grid-column: 3/4;
     align-items: flex-end;
     border: 2px solid;
     padding: 5px;
     text-align: center;
+    color: var(--main-color);
+    background-color: var(--secondary-color);
+    display: none;
+    font-size: 1.3em;
 }
 
 .container{
-    border: 2px solid;
+
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
@@ -55,4 +91,47 @@ img{
 
 .mini-container{
      grid-column: 2/3;
+}
+
+.get-pokemon-btn, #clear-history{
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 2em;
+}
+
+#clear-history{
+    background-color: var(--main-color);
+    margin: 10px;
+}
+
+.get-pokemon-btn:hover{
+    background-color: var(--secondary-color);
+    color: var(--main-color);
+}
+
+#clear-history:hover{
+    color: var(--main-color);
+    background-color: var(--secondary-color);
+}
+
+
+#name, #height, #weight, #pok-id, #type{
+    font-weight: bold;
+    color: black;
+    font-size: 1.2em;
+    padding: 8px;
+    display: none;
+}
+
+
+.pokemons > div {
+ font-size: 1.3em;
+}
+
+.pokemons{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 10px;
 }

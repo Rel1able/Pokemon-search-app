@@ -2,7 +2,8 @@ const form = document.querySelector("form");
 const searchHistory = document.querySelector(".search-history");
 const pokemonsInSearchHistory = document.querySelector(".pokemons");
 const searchedPokemons = [];
-
+const clearHistoryBtn = document.getElementById("clear-history");
+const formData = document.querySelector(".form-data");
 
 function savePokemonsToLocalStorage() {
     localStorage.setItem("pokemons", JSON.stringify(searchedPokemons));
@@ -26,7 +27,7 @@ async function fetchPokemonData() {
             throw new Error("Failed to fetch the data");
         }
         const data = await request.json();
-        console.log(data);
+  
 
         const pokemonId = data.id;
         const pokName = data.name;
@@ -42,8 +43,14 @@ async function fetchPokemonData() {
         const pokPic = document.getElementById("pok-pic");
         pokPic.src = await pokemonSprite;
         pokPic.style.display = "block";
-        console.log(pokName, pokemonHeight, pokemonWeight, pokemonId, pokemonType);
-        console.log(searchedPokemons);
+        formData.style.paddingBottom = "10px";
+        searchHistory.style.display = "block";
+
+        document.getElementById("name").style.display = "block";
+        document.getElementById("height").style.display = "block";
+        document.getElementById("weight").style.display = "block";
+        document.getElementById("pok-id").style.display = "block";
+        document.getElementById("type").style.display = "block";
     }
     catch(error) {
         alert(error); 
@@ -97,12 +104,28 @@ searchHistory.addEventListener("click", () => {
     );
 })
 
+function updateSearchHistory(pokemonName) {
+    let newPokemon = document.createElement("div")
+        newPokemon.textContent = pokemonName;
+        pokemonsInSearchHistory.appendChild(newPokemon);
+}
+
 
 function addPokemonsToHistory(pokemonName) {
     if (!searchedPokemons.includes(pokemonName)) {
         searchedPokemons.push(pokemonName);
         savePokemonsToLocalStorage();
+        updateSearchHistory(pokemonName);
     }
 }
 
+function clearLocalStorage() {
+    localStorage.clear();
+}
 
+clearHistoryBtn.addEventListener("click", () => {
+    clearLocalStorage();
+    searchedPokemons.length = 0;
+    pokemonsInSearchHistory.innerHTML = "";
+    searchHistory.style.display = "none";
+})

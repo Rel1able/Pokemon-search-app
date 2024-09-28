@@ -14,7 +14,7 @@
             <form>
             <div class="form-data">
             <input type="text" id="pokemonName" placeholder="enter the name of the pokemon">
-            <button onclick="fetchPokemonData()">Get Pokemon</button>
+            <button class="get-pokemon-btn" onclick="fetchPokemonData()">Get Pokemon</button>
             <img id="pok-pic" src="" alt="picture of the pokemon" style="display: none">
             <div class="pokemon-stats">
                 <div id="name"></div>
@@ -30,6 +30,7 @@
         
     
     <div class="search-history">Search history
+        <button id="clear-history">clear history</button>
         <div class="pokemons">
             
         </div>
