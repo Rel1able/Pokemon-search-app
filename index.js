@@ -1,5 +1,6 @@
 const form = document.querySelector("form");
 const searchHistory = document.querySelector(".search-history");
+const pokemonsInSearchHistory = document.querySelector(".pokemons");
 const searchedPokemons = [];
 
 
@@ -34,9 +35,7 @@ async function fetchPokemonData() {
         const pokemonSprite = data.sprites.front_default;
         const pokemonType = data.types[0]["type"]["name"];
         
-        const pokemon = [pokName];
-        searchedPokemons.push(pokemon);
-        savePokemonsToLocalStorage();
+        addPokemonsToHistory(pokName);
 
         setPokemonStats(pokName, pokemonHeight, pokemonWeight, pokemonId, pokemonType);
 
@@ -98,5 +97,12 @@ searchHistory.addEventListener("click", () => {
     );
 })
 
-const pokemonsInSearchHistory = document.querySelector(".pokemons");
+
+function addPokemonsToHistory(pokemonName) {
+    if (!searchedPokemons.includes(pokemonName)) {
+        searchedPokemons.push(pokemonName);
+        savePokemonsToLocalStorage();
+    }
+}
+
 
