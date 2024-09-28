@@ -9,9 +9,10 @@
 </head>
 <body>
     <header>Pokemon Search App</header>
-    <form>
-        
-        <div class="form-data">
+    <div class="container">
+        <div class="mini-container">
+            <form>
+            <div class="form-data">
             <input type="text" id="pokemonName" placeholder="enter the name of the pokemon">
             <button onclick="fetchPokemonData()">Get Pokemon</button>
             <img id="pok-pic" src="" alt="picture of the pokemon" style="display: none">
@@ -22,9 +23,19 @@
                 <div id="pok-id"></div>
                 <div id="type"></div>
             </div>
+        
+        </div>
+    </form>
         </div>
         
-    </form>
+    
+    <div class="search-history">Search history
+        <div class="pokemons">
+            
+        </div>
+    </div>
+    </div>
+    
     <footer>Made by Rel1able</footer>
 </body>
 </html>

@@ -1,5 +1,20 @@
 const form = document.querySelector("form");
+const searchHistory = document.querySelector(".search-history");
+const searchedPokemons = [];
 
+
+function savePokemonsToLocalStorage() {
+    localStorage.setItem("pokemons", JSON.stringify(searchedPokemons));
+}
+function loadPokemonsFromLocalStorage() {
+    const storedPokemons = JSON.parse(localStorage.getItem("pokemons"));
+    if (storedPokemons) {
+        searchedPokemons.length = 0;
+        searchedPokemons.push(...storedPokemons);
+    }
+}
+
+loadPokemonsFromLocalStorage();
 
 async function fetchPokemonData() {
     try {
@@ -19,6 +34,9 @@ async function fetchPokemonData() {
         const pokemonSprite = data.sprites.front_default;
         const pokemonType = data.types[0]["type"]["name"];
         
+        const pokemon = [pokName];
+        searchedPokemons.push(pokemon);
+        savePokemonsToLocalStorage();
 
         setPokemonStats(pokName, pokemonHeight, pokemonWeight, pokemonId, pokemonType);
 
@@ -26,6 +44,7 @@ async function fetchPokemonData() {
         pokPic.src = await pokemonSprite;
         pokPic.style.display = "block";
         console.log(pokName, pokemonHeight, pokemonWeight, pokemonId, pokemonType);
+        console.log(searchedPokemons);
     }
     catch(error) {
         alert(error); 
@@ -65,3 +84,19 @@ function convertHeight(height) {
     const newHeight = height / 10;
     return newHeight;
 }
+
+
+
+searchHistory.addEventListener("click", () => {
+    pokemonsInSearchHistory.innerHTML = "";
+     searchedPokemons.forEach(pokemon => {
+        let newPokemon = document.createElement("div")
+        newPokemon.textContent = pokemon;
+        pokemonsInSearchHistory.appendChild(newPokemon);
+    }
+        
+    );
+})
+
+const pokemonsInSearchHistory = document.querySelector(".pokemons");
+
