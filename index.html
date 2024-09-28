@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon search app</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <header>Pokemon Search App</header>
+    <form>
+        
+        <div class="form-data">
+            <input type="text" id="pokemonName" placeholder="enter the name of the pokemon">
+            <button onclick="fetchPokemonData()">Get Pokemon</button>
+            <img id="pok-pic" src="" alt="picture of the pokemon" style="display: none">
+            <div class="pokemon-stats">
+                <div id="name"></div>
+                <div id="height"></div>
+                <div id="weight"></div>
+                <div id="pok-id"></div>
+                <div id="type"></div>
+            </div>
+        </div>
+        
+    </form>
+    <footer>Made by Rel1able</footer>
+</body>
+</html>
