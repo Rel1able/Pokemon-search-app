@@ -10,9 +10,17 @@ function savePokemonsToLocalStorage() {
 }
 function loadPokemonsFromLocalStorage() {
     const storedPokemons = JSON.parse(localStorage.getItem("pokemons"));
-    if (storedPokemons) {
+    if (storedPokemons && storedPokemons.length > 0) {
         searchedPokemons.length = 0;
         searchedPokemons.push(...storedPokemons);
+        pokemonsInSearchHistory.innerHTML = "";
+        storedPokemons.forEach(pokemon => {
+            updateSearchHistory(pokemon);
+        });
+
+        searchHistory.style.display = "block";
+    } else {
+        searchHistory.style.display = "none"; 
     }
 }
 
@@ -93,7 +101,7 @@ function convertHeight(height) {
 
 
 
-searchHistory.addEventListener("click", () => {
+/*searchHistory.addEventListener("click", () => {
     pokemonsInSearchHistory.innerHTML = "";
      searchedPokemons.forEach(pokemon => {
         let newPokemon = document.createElement("div")
@@ -102,7 +110,7 @@ searchHistory.addEventListener("click", () => {
     }
         
     );
-})
+})*/
 
 function updateSearchHistory(pokemonName) {
     let newPokemon = document.createElement("div")

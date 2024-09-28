@@ -30,11 +30,12 @@ header, footer{
 input{
     background-color: var(--secondary-color);
     padding: 10px;
-    width: 50%;
+    width: 70%;
     border: none;
     text-align: center;
     color: var(--main-color);
     font-weight: bold;
+    font-size: 1.2em;
 }
 
 input:focus{
@@ -105,9 +106,14 @@ img{
     margin: 10px;
 }
 
+.get-pokemon-btn{
+    padding: 10px;
+}
+
 .get-pokemon-btn:hover{
     background-color: var(--secondary-color);
     color: var(--main-color);
+    
 }
 
 #clear-history:hover{
