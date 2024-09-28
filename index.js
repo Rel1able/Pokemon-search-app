@@ -100,18 +100,6 @@ function convertHeight(height) {
 }
 
 
-
-/*searchHistory.addEventListener("click", () => {
-    pokemonsInSearchHistory.innerHTML = "";
-     searchedPokemons.forEach(pokemon => {
-        let newPokemon = document.createElement("div")
-        newPokemon.textContent = pokemon;
-        pokemonsInSearchHistory.appendChild(newPokemon);
-    }
-        
-    );
-})*/
-
 function updateSearchHistory(pokemonName) {
     let newPokemon = document.createElement("div")
         newPokemon.textContent = pokemonName;
